@@ -1,0 +1,44 @@
+#leaderboard {
+
+}
+#leaderboard li {
+	line-height: 12px;
+}
+#leaderboard #players li {
+	display: block;
+	clear: both;
+	position: absolute;
+	width: 100%;
+
+	-moz-transition-duration: 1s;
+	-webkit-transition-duration: 1s;
+	-ms-transition-duration: 1s;
+}
+
+#leaderboard #players {
+	padding: 0;
+	width: 400px;
+	position: relative;
+}
+#leaderboard #players div {
+	display: block;
+	float: left;
+	overflow: hidden;
+	padding: 5px;
+}
+
+#leaderboard .player {
+	background: #ddd;
+}
+#leaderboard .rank {
+	width: 50px;
+}
+#leaderboard .flag {
+	width: 10px;
+}
+#leaderboard .name {
+	width: 150px;
+}
+#leaderboard .score {
+	width: 100px;	
+}
