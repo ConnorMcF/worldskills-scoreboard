@@ -172,16 +172,16 @@ namespace WorldSkillsScoreboard
             while (true)
             {
                 // find PT
-                Process[] processes = Process.GetProcessesByName("PacketTracer7");
+                Process[] processes = Process.GetProcessesByName(opts.PTProcess);
 
                 if (processes.Length == 0)
                 {
                     // or don't find PT
                     Console.WriteLine("[!] PT not detected!");
-                    Console.WriteLine("[!] Waiting for PacketTracer7 process..");
+                    Console.WriteLine("[!] Waiting for {0} process..", opts.PTProcess);
                     while(true)
                     {
-                        processes = Process.GetProcessesByName("PacketTracer7");
+                        processes = Process.GetProcessesByName(opts.PTProcess);
                         if (processes.Length != 0)
                         {
                             break;
