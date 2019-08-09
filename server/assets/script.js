@@ -27,8 +27,8 @@ scores = [{"id":0,"name":"at","score":0,"pos":0},{"id":1,"name":"by","score":0,"
 scores.forEach((x) => { x.score = -1 })//Math.random() * 100 })
 
 let update = function() {
-	document.querySelector('#players').innerHTML = HEADER + scores.map((x) => {
-		return '<li class="player" hack="' + (countryFont[x.name] ? countryFont[x.name] : '') + '" id="pl_' + x.id + '">' +
+	document.querySelector('#players').innerHTML = HEADER + scores.map((x, i) => {
+		return '<li class="player pos' + i + '" hack="' + (countryFont[x.name] ? countryFont[x.name] : '') + '" id="pl_' + x.id + '">' +
 			'<div class="rank"></div>' +
 			'<div class="flag"><span class="flag-icon flag-icon-' + (flagOverride[x.name] ? flagOverride[x.name] : x.name) + '"></span></div>' +
 			'<div class="name">' + COUNTRIES[x.name] + '</div>' +
