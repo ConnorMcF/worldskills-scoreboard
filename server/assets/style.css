@@ -79,6 +79,9 @@ html, body {
 #leaderboard .player.pos0[hack="mo-hack"] .name, #leaderboard .player.pos1[hack="mo-hack"] .name, #leaderboard .player.pos2[hack="mo-hack"] .name {
 	font-size: 34px;
 }
+#leaderboard .player.pos0[hack="za-hack"] .name, #leaderboard .player.pos1[hack="za-hack"] .name, #leaderboard .player.pos2[hack="za-hack"] .name {
+	font-size: 34px;
+}
 
 #leaderboard .player.up {
 	box-shadow: 100vw 0px 0px rgba(0, 255, 0, .85) inset;

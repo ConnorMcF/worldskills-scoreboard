@@ -1,5 +1,5 @@
 const CONFIG = {
-	demoMode: true
+	demoMode: false
 }
 
 const COUNTRIES = {"at":"Austria","by":"Belarus","br":"Brazil","ca":"Canada","cn":"China","tpe":"Chinese Taipei","co":"Colombia","cr":"Costa Rica","hr":"Croatia","eg":"Egypt","ee":"Estonia","fr":"France","de":"Germany","hu":"Hungary","id":"Indonesia","ir":"Iran","jp":"Japan","kz":"Kazakhstan","kr":"Korea","li":"Liechtenstein","mo":"Macao, China","om":"Oman","pt":"Portugal","ru":"Russia","sg":"Singapore","za":"South Africa","es":"Spain","se":"Sweden","ch":"Switzerland"}
@@ -19,7 +19,8 @@ let flagOverride = {
 
 let countryFont = {
 	'tpe': 'tpe-hack',
-	'mo': 'mo-hack'
+	'mo': 'mo-hack',
+	'za': 'za-hack'
 }
 
 scores = [{"id":0,"name":"at","score":0,"pos":0},{"id":1,"name":"by","score":0,"pos":0},{"id":2,"name":"br","score":0,"pos":0},{"id":3,"name":"ca","score":0,"pos":0},{"id":4,"name":"cn","score":0,"pos":0},{"id":5,"name":"tpe","score":0,"pos":0},{"id":6,"name":"co","score":0,"pos":0},{"id":7,"name":"cr","score":0,"pos":0},{"id":8,"name":"hr","score":0,"pos":0},{"id":9,"name":"eg","score":0,"pos":0},{"id":10,"name":"ee","score":0,"pos":0},{"id":11,"name":"fr","score":0,"pos":0},{"id":12,"name":"de","score":0,"pos":0},{"id":13,"name":"hu","score":0,"pos":0},{"id":14,"name":"id","score":0,"pos":0},{"id":15,"name":"ir","score":0,"pos":0},{"id":16,"name":"jp","score":0,"pos":0},{"id":17,"name":"kz","score":0,"pos":0},{"id":18,"name":"kr","score":0,"pos":0},{"id":19,"name":"li","score":0,"pos":0},{"id":20,"name":"mo","score":0,"pos":0},{"id":21,"name":"om","score":0,"pos":0},{"id":22,"name":"pt","score":0,"pos":0},{"id":23,"name":"ru","score":0,"pos":0},{"id":24,"name":"sg","score":0,"pos":0},{"id":25,"name":"za","score":0,"pos":0},{"id":26,"name":"es","score":0,"pos":0},{"id":27,"name":"se","score":0,"pos":0},{"id":28,"name":"ch","score":0,"pos":0}]
@@ -145,9 +146,9 @@ let updateScore = function(name, amt) {
 
 		if(x.pos != x.oldPos && x.score !== 0) {
 			if(x.pos > x.oldPos) {
-				document.querySelector('.player#pl_' + x.id).classList = 'player down'
+				document.querySelector('.player#pl_' + x.id).classList = 'player pos' + i + ' down'
 			} else {
-				document.querySelector('.player#pl_' + x.id).classList = 'player up'
+				document.querySelector('.player#pl_' + x.id).classList = 'player pos' + i + ' up'
 			}
 		}
 

@@ -7,3 +7,5 @@ Written in C#, reads memory from PacketTracer process to send score to server an
 ## Server
 
 Written in node.js, takes connections from application to collect real-time scores.
+
+Design works best in Firefox, Chromium appears to cause flickering.
