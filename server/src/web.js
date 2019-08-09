@@ -5,7 +5,7 @@ const io = require('socket.io')(server)
 
 const path = require('path')
 
-app.use('/assets', express.static(path.join(__dirname, 'assets')))
+app.use('/assets', express.static(path.join(__dirname, '../assets')))
 
 app.get('/', function (req, res) {
 	res.sendFile(__dirname + '/web.html');

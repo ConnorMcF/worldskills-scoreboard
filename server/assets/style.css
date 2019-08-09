@@ -1,44 +1,138 @@
+html, body {
+	padding: 0;
+	margin: 0;
+
+	background: #191925;
+	color: #fff;
+
+	overflow: hidden;
+
+	min-width: 100vw;
+	min-height: 100vh;
+}
+
+#app {
+	font-family: 'Inter';
+
+	background: #191925;
+
+	max-width: 100vw;
+}
+
+.container {
+	max-width: 1700px;
+	margin: 0 auto;
+}
+
 #leaderboard {
+	
+}
 
-}
-#leaderboard li {
-	line-height: 12px;
-}
 #leaderboard #players li {
-	display: block;
-	clear: both;
 	position: absolute;
-	width: 100%;
+	
 
-	-moz-transition-duration: 1s;
-	-webkit-transition-duration: 1s;
-	-ms-transition-duration: 1s;
+	transition: top 1s;
 }
 
 #leaderboard #players {
 	padding: 0;
-	width: 400px;
 	position: relative;
 }
 #leaderboard #players div {
 	display: block;
-	float: left;
-	overflow: hidden;
 	padding: 5px;
 }
 
 #leaderboard .player {
 	background: #ddd;
+
+	background: linear-gradient(45deg,#292e45,#15192a);
+
+	padding: 10px;
+	font-size: 18px;
+
+	box-shadow: none;
+
+	transition: box-shadow 4s, top 1s, left 1s;
+
+	display: inline-flex;
+	
+	align-items: center;
+
+	width: 400px;
+
+	border-radius: 2px;
 }
+
+
+
+#leaderboard .player.pos0, #leaderboard .player.pos1, #leaderboard .player.pos2 {
+	font-size: 40px;
+	width: 480px;
+}
+
+/* name too long for one line */
+#leaderboard .player.pos0[hack="tpe-hack"] .name, #leaderboard .player.pos1[hack="tpe-hack"] .name, #leaderboard .player.pos2[hack="tpe-hack"] .name {
+	font-size: 34px;
+}
+#leaderboard .player.pos0[hack="mo-hack"] .name, #leaderboard .player.pos1[hack="mo-hack"] .name, #leaderboard .player.pos2[hack="mo-hack"] .name {
+	font-size: 34px;
+}
+
+#leaderboard .player.up {
+	box-shadow: 100vw 0px 0px rgba(0, 255, 0, .85) inset;
+}
+#leaderboard .player.down {
+	box-shadow: 100vw 0px 0px rgba(255, 0, 0, .85) inset;
+}
+
+
 #leaderboard .rank {
-	width: 50px;
+	flex-basis: 5%;
+	text-align: center;
+	margin-right: 20px;
 }
 #leaderboard .flag {
-	width: 10px;
+	flex-basis: 10%;
 }
 #leaderboard .name {
-	width: 150px;
+	flex-basis: 60%;
 }
 #leaderboard .score {
-	width: 100px;	
+	flex-basis: 10%;
+}
+
+.marquee {
+	position: fixed;
+	animation: scroll 15s linear 0s infinite;
+
+	bottom: 25vh;
+	left: 0;
+
+	min-width: 100vw;
+
+	font-size: 40px;
+}
+
+.wave {
+	background-image: url(/assets/wave.svg);
+	position: absolute;
+	top: -3vh;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	opacity: .1;
+	background-repeat: no-repeat;
+	background-size: 100vw;
+}
+
+
+@keyframes scroll {
+	0% {
+		transform: translate(100vw,0);
+	}
+	100% {
+		transform: translate(-100vw,0);
+	}
 }
