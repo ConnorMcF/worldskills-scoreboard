@@ -1,0 +1,25 @@
+{
+  "name": "worldskills-scoreboard-server",
+  "version": "1.0.0",
+  "description": "Run with `node index`, see arguments with `--help`",
+  "main": "index.js",
+  "dependencies": {
+    "commander": "^2.20.0",
+    "express": "^4.17.1",
+    "socket.io": "^2.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ConnorMcF/worldskills-scoreboard.git"
+  },
+  "author": "Connor McFarlane <connormcf@0x0.ltd> (https://connormcf.com)",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/ConnorMcF/worldskills-scoreboard/issues"
+  },
+  "homepage": "https://github.com/ConnorMcF/worldskills-scoreboard#readme"
+}
