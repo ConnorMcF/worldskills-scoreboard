@@ -124,7 +124,7 @@ namespace WorldSkillsScoreboard
                 opts.Name = Console.ReadLine();
             }
 
-            Connect();
+            Connect(false);
         }
 
         static void Complain(IEnumerable<Error> errors)
@@ -140,8 +140,16 @@ namespace WorldSkillsScoreboard
             }
         }
 
-        static void Connect()
+        static void Connect(bool reconnect)
         {
+            if(reconnect)
+            {
+                Console.WriteLine("[.] Resetting socket..");
+                sock.Shutdown(SocketShutdown.Both);
+                sock.Close();
+
+                sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            }
             Console.WriteLine("[.] Establishing connection..");
 
             // connect
@@ -149,7 +157,10 @@ namespace WorldSkillsScoreboard
                 sock.Connect(opts.Host, opts.Port);
             } catch (SocketException se) {
                 // or don't
-                Console.WriteLine("Failed to connect to host! " + se.Message);
+                Console.WriteLine("[!] Failed to connect to host! " + se.Message);
+                Console.WriteLine("[!] Retrying in 5 seconds..");
+
+                Thread.Sleep(5000);
 
                 Start(null);
                 return;
@@ -303,8 +314,10 @@ namespace WorldSkillsScoreboard
                 catch (SocketException se)
                 {
                     Console.WriteLine("[!] SocketException: {0}", se.Message);
-                    Console.ReadLine();
-                    Environment.Exit(1);
+                    Console.WriteLine("[!] Retrying in 4 seconds..");
+                    Thread.Sleep(4000);
+                    Connect(true);
+                    return;
                 }
 
                 Thread.Sleep(1000);
@@ -327,8 +340,10 @@ namespace WorldSkillsScoreboard
             catch (SocketException se)
             {
                 Console.WriteLine("[!] SocketException: {0}", se.Message);
-                Console.ReadLine();
-                Environment.Exit(1);
+                Console.WriteLine("[!] Retrying in 4 seconds..");
+                Thread.Sleep(4000);
+                Connect(true);
+                return;
             }
         }
     }
