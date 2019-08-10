@@ -14,13 +14,15 @@ app.get('/', function (req, res) {
 io.on('connection', function (socket) {
 	socket.emit('connect', { hello: 'world' })
 	socket.emit('scores', Scoreboard.scores)
+	socket.emit('display', Scoreboard.socket.display())
 })
 
 module.exports = {
 	io,
 	listen: (port) => {
 		server.listen(port, function() {
-			console.log('Web listening on %i', port)
+			//console.log('Web listening on %i', port)
+			Scoreboard.shell.log('Web listening on ' + port)
 		})
 	}
 }
