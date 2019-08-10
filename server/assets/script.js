@@ -1,5 +1,5 @@
 const CONFIG = {
-	demoMode: false
+	demoMode: true
 }
 
 const COUNTRIES = {"at":"Austria","by":"Belarus","br":"Brazil","ca":"Canada","cn":"China","tpe":"Chinese Taipei","co":"Colombia","cr":"Costa Rica","hr":"Croatia","eg":"Egypt","ee":"Estonia","fr":"France","de":"Germany","hu":"Hungary","id":"Indonesia","ir":"Iran","jp":"Japan","kz":"Kazakhstan","kr":"Korea","li":"Liechtenstein","mo":"Macao, China","om":"Oman","pt":"Portugal","ru":"Russia","sg":"Singapore","za":"South Africa","es":"Spain","se":"Sweden","ch":"Switzerland"}
@@ -51,6 +51,9 @@ let update = function() {
 	console.log(scores)
 }
 
+// slide
+const VERTICAL = true
+
 let calcPos = function(i) {
 
 	// total leader width 1540
@@ -71,55 +74,58 @@ let calcPos = function(i) {
 	const HEIGHT = 75
 	const HEIGHTPAD = 300
 
-	if(seg == 0) {
-		let h = (i - 3) * HEIGHT
-		return [h + HEIGHTPAD, 0 + 140]
-	}
+	if(VERTICAL) {
+		if(seg == 0) {
+			let h = (i - 3) * HEIGHT
+			return [h + HEIGHTPAD, 0 + 140]
+		}
 
-	if(seg == 1) {
-		let h = (i - 12) * HEIGHT
-		return [h + HEIGHTPAD, 500 + 140]
-	}
+		if(seg == 1) {
+			let h = (i - 12) * HEIGHT
+			return [h + HEIGHTPAD, 500 + 140]
+		}
 
-	if(seg == 2) {
-		let h = (i - 21) * HEIGHT
-		return [h + HEIGHTPAD, 1000 + 140]
-	}
+		if(seg == 2) {
+			let h = (i - 21) * HEIGHT
+			return [h + HEIGHTPAD, 1000 + 140]
+		}
 
-	if(seg == 3) {
-		let h = (i - 24) * HEIGHT
-		return [h + HEIGHTPAD, 1500 + 140]
-	}
+		if(seg == 3) {
+			let h = (i - 24) * HEIGHT
+			return [h + HEIGHTPAD, 1500 + 140]
+		}
+	} else {
+		// borked
 
-	/*if(seg == 1) {
-		let w = (i - 3) * 426
-		return [250, w]
+		if(seg == 1) {
+			let w = (i - 3) * 10
+			return [250, w]
+		}
+		if(seg == 2) {
+			let w = (i - 7) * 426
+			return [350, w]
+		}
+		if(seg == 3) {
+			let w = (i - 11) * 426
+			return [450, w]
+		}
+		if(seg == 4) {
+			let w = (i - 15) * 426
+			return [550, w]
+		}
+		if(seg == 5) {
+			let w = (i - 19) * 426
+			return [650, w]
+		}
+		if(seg == 6) {
+			let w = (i - 23) * 426
+			return [750, w]
+		}
+		if(seg == 7) {
+			let w = (i - 27) * 426
+			return [850, w]
+		}
 	}
-	if(seg == 2) {
-		let w = (i - 7) * 426
-		return [350, w]
-	}
-	if(seg == 3) {
-		let w = (i - 11) * 426
-		return [450, w]
-	}
-	if(seg == 4) {
-		let w = (i - 15) * 426
-		return [550, w]
-	}
-	if(seg == 5) {
-		let w = (i - 19) * 426
-		return [650, w]
-	}
-	if(seg == 6) {
-		let w = (i - 23) * 426
-		return [750, w]
-	}
-	if(seg == 7) {
-		let w = (i - 27) * 426
-		return [850, w]
-	}*/
-
 
 	return [((i) * (48 + 5)) + 500, 0]
 	/*if(i == 0) { return [((i) * 48) + 0, 500] }
@@ -175,12 +181,18 @@ socket.on('connect', (data) => {
 socket.on('scores', (data) => {
 	console.log('scores', data)
 
+	// init dom
 	update()
 
 	setTimeout(() => {
-		data.forEach((x) => {
-			updateScore(x.name, parseFloat(x.score))
+		Object.keys(data).forEach((x) => {
+			updateScore(data[x].name, parseFloat(data[x].score))
 		})
+
+		setTimeout(() => {
+			// force recalc
+			updateScore(scores[0].name, scores[0].score)
+		}, 500)
 	}, 100)
 })
 
@@ -188,7 +200,31 @@ socket.on('score', (data) => {
 	console.log('score', data)
 	
 	updateScore(data.name, parseFloat(data.score))
+
+	setTimeout(() => {
+		// force recalc
+		updateScore(scores[0].name, scores[0].score)
+	}, 500)
 })
+
+socket.on('display', (data) => {
+	console.log('display', data)
+	switchDisplay(data)
+})
+
+let DISPLAY = ''
+
+let switchDisplay = function(display) {
+	DISPLAY = display
+
+	document.querySelector('.container.logo').classList = 'container logo'
+	document.querySelector('.container.board').classList = 'container board'
+
+	setTimeout(() => {
+		document.querySelector('.container.' + display).classList = 'container ' + display + ' show'
+		document.querySelector('.container.' + (display == 'logo' ? 'board' : 'logo')).classList = 'container ' + (display == 'logo' ? 'board' : 'logo')
+	}, 1000)
+}
 
 
 if(CONFIG.demoMode) {
