@@ -4,7 +4,8 @@ Clone the repo from the `master` branch for the latest version.
 
 ## Server
 
-Install node.js, any LTS version should be fine. Enter the server directory.
+Install node.js, any LTS version should be fine and enter the server directory.
+
 Node.js 12 for Debian/Ubuntu based distros:
 ```
 curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
@@ -35,6 +36,7 @@ A logo will display on the display until you press F2 on the server to switch be
 ## Application
 
 Ensure all PacketTracer installs are using the same version - this is important.
+
 This version has been built for PacketTracer `7.2.0.0226`, if it differs - see troubleshooting section.
 
 Build from source or download the latest binary from the [releases tab on GitHub](https://github.com/ConnorMcF/worldskills-scoreboard/releases).
