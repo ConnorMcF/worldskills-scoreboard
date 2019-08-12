@@ -61,8 +61,9 @@ goto loop
 ```
 
 The name attribute should be any of the following, otherwise it won't show up:
-| Code  | Country           |
-|-------|-------------------|
+
+| Code  | Country         |
+| ----- | --------------- |
 | at  	| Austria        	|
 | by  	| Belarus        	|
 | br  	| Brazil         	|
