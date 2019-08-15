@@ -26,7 +26,7 @@ let ui = {
         tags: true
     }),
     competitors: grid.set(0, 10, 14, 4, blessed.box, {
-        label: 'Competitors (0/29)',
+        label: 'Competitors (0/' + Object.keys(Scoreboard.consts.COUNTRIES).length + ')',
         content: '{red-fg}NO DATA{/red-fg}',
         tags: true
     }),
@@ -54,7 +54,7 @@ let updateComp = function() {
 
 	let connected = Object.keys(Scoreboard.scores).filter(s => Scoreboard.scores[s].score != -1).length
 
-	ui.competitors.setLabel({ text: 'Competitors (' + connected + '/29)' })
+	ui.competitors.setLabel({ text: 'Competitors (' + connected + '/' + Object.keys(Scoreboard.consts.COUNTRIES).length +')' })
 	ui.competitors.content = data
 }
 
