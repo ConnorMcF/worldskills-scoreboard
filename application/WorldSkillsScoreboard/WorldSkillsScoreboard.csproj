@@ -2,13 +2,18 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType> <!-- lies -->
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
     <AssemblyName>WorldSkillsScoreboard</AssemblyName>
     <RootNamespace>WorldSkillsScoreboard</RootNamespace>
     <ApplicationIcon />
     <StartupObject></StartupObject>
     <Authors>semtex.net</Authors>
     <Product>WorldSkillsScoreboard</Product>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile></DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
